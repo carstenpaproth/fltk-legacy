@@ -703,16 +703,16 @@ case $uname in
 	dnl Check for the Xft library unless disabled...
 	AC_ARG_ENABLE(xft, [  --enable-xft            turn on Xft support (default=yes)])
 	if test x$enable_xft != xno; then
-	  AC_PATH_PROG(FTCONFIG, freetype-config)
+	  AC_PATH_PROG(FTCONFIG, pkg-config)
 	  if test "x$FTCONFIG" != "x:"; then
-	    CPPFLAGS="`$FTCONFIG --cflags` $CPPFLAGS"
-	    CXXFLAGS="`$FTCONFIG --cflags` $CXXFLAGS"
-	    ac_cpp="$ac_cpp `$FTCONFIG --cflags`"
+	    CPPFLAGS="`$FTCONFIG --cflags freetype2` $CPPFLAGS"
+	    CXXFLAGS="`$FTCONFIG --cflags freetype2` $CXXFLAGS"
+	    ac_cpp="$ac_cpp `$FTCONFIG --cflags freetype2`"
 	    AC_CHECK_HEADER(
 	      X11/Xft/Xft.h,
 	      AC_CHECK_LIB(Xft, XftDrawCreate,
 	      AC_DEFINE(USE_XFT)
-	      LIBS="-lXft $LIBS")
+	      LIBS="-lXft -lXrender -lfontconfig -lfreetype $LIBS")
 	    )
 	  fi
 	fi
