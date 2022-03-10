@@ -47,7 +47,7 @@ void drawFocusRect(const fltk::Rectangle& r1) {
   // X version uses stipple pattern because there seem to be too many
   // servers with bugs when drawing dotted lines:
   static const char pattern[]
-    = {0xAA,0x55,0xAA,0x55,0xAA,0x55,0xAA,0x55,0xAA};
+    = {(char)0xAA,0x55,(char)0xAA,0x55,(char)0xAA,0x55,(char)0xAA,0x55,(char)0xAA};
   static Pixmap evenstipple, oddstipple;
   if (!evenstipple) {
     XWindow root = RootWindow(xdisplay, xscreen);

@@ -40,7 +40,8 @@ extern "C"
 #endif
 }
 
-# include <stdlib.h>
+#include <stdlib.h>
+#include <cstring>
 
 static png_bytep cur_datas;
 
