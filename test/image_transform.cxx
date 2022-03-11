@@ -115,7 +115,7 @@ int main(int argc, char** argv) {
     else {s->range(0,SIZE); s->tooltip("top-left corner of rectangle passed to Image::draw()");}
     s->value(xy[n]);
     s->align(ALIGN_LEFT);
-    s->callback(slider_cb, (void*)n);
+    s->callback(slider_cb, (void*)(uintptr_t)n);
   }
   RadioButton* b = new RadioButton(50,y,240,25,"RGB32 fltk::drawimage()"); y+= 25;
   b->callback(noalpha_cb); b->set();

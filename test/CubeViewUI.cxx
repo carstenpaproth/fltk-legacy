@@ -43,9 +43,9 @@ void CubeViewUI::cb_hrot(fltk::ThumbWheel* o, void* v) {
 }
 
 CubeViewUI::CubeViewUI() {
-  fltk::Window* w;
+  //fltk::Window* w;
    {fltk::Window* o = mainWindow = new fltk::Window(415, 406, "CubeView");
-    w = o;
+    //w = o;
     o->user_data((void*)(this));
     o->begin();
      {fltk::Group* o = new fltk::Group(3, 3, 409, 400);

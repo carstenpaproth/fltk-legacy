@@ -100,7 +100,7 @@ int Drawing::handle(int event) {
   unsigned base = scroll*16;
   unsigned ucs = base+y*16+x;
   Tooltip::enter(this, Rectangle(w()*(2+x)/18, y*itemh, (w()+9)/18, itemh),
-		 generator, (void*)ucs);
+		 generator, (void*)(uintptr_t)ucs);
   return true;
 }
 

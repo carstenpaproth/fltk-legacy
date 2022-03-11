@@ -93,7 +93,7 @@ struct FL_API Fl_Menu_Item {
   unsigned labelsize() const {return labelsize_;}
   fltk::Callback_p callback() const {return callback_;}
   void* user_data() const {return user_data_;}
-  long argument() const {return (long)user_data_;}
+  uintptr_t argument() const {return (uintptr_t)user_data_;}
   int shortcut() const {return shortcut_;}
   int submenu() const {return flags&(FL_SUBMENU|FL_SUBMENU_POINTER);}
   int checkbox() const {return flags&FL_MENU_TOGGLE;}
@@ -112,9 +112,9 @@ struct FL_API Fl_Menu_Item {
   void callback(fltk::Callback* c, void* p) {callback_=c; user_data_=p;}
   void callback(fltk::Callback* c) {callback_=c;}
   void callback(fltk::Callback0*c) {callback_=(fltk::Callback*)c;}
-  void callback(fltk::Callback1*c, long p=0) {callback_=(fltk::Callback*)c; user_data_=(void*)p;}
+  void callback(fltk::Callback1*c, uintptr_t p=0) {callback_=(fltk::Callback*)c; user_data_=(void*)p;}
   void user_data(void* v) {user_data_ = v;}
-  void argument(long v) {user_data_ = (void*)v;}
+  void argument(uintptr_t v) {user_data_ = (void*)v;}
   void shortcut(int s) {shortcut_ = s;}
   void set() {flags |= FL_MENU_VALUE;}
   void clear() {flags &= ~FL_MENU_VALUE;}

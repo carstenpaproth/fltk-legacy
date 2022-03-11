@@ -2160,7 +2160,7 @@ int WidgetType::read_fdesign(const char* name, const char* value) {
   } else if (!strcmp(name,"style")) {
     if (!strncmp(value,"fltk::NORMAL",9)) return 1;
     if (!lookup_fdesign(value,v,1)) return 0;
-    o->labelfont(fltk::font(v)); o->labeltype((fltk::LabelType*)(v>>8));
+    o->labelfont(fltk::font(v)); o->labeltype((fltk::LabelType*)(uintptr_t)(v>>8));
   } else if (!strcmp(name,"size")) {
       if (!lookup_fdesign(value,v,1)) return 0;
     o->labelsize((float)v);

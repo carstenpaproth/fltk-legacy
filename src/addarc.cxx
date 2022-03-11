@@ -120,7 +120,7 @@ void fltk::addarc(float l, float t, float w, float h, float start, float end)
       *p++ = y + Y;
     } while (--i);
   }
-  addvertices((p-points[0])/2, points);
+  addvertices((int)(p-points[0])/2, points);
 #endif
 }
 

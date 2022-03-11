@@ -51,7 +51,7 @@ int when = 0;
 Input *input[5];
 TextEditor* editor;
 
-void toggle_cb(Widget *o, long v) {
+void toggle_cb(Widget *o, uintptr_t v) {
   if (((ToggleButton*)o)->value()) when |= v; else when &= ~v;
   for (int i=0; i<5; i++) input[i]->when(when);
   editor->when(when);

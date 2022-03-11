@@ -1726,7 +1726,8 @@ bool fltk::handle()
     e_text = buffer;
     e_length = len;
     fl_actual_keysym = int(keysym);
-    keysym = XKeycodeToKeysym(xdisplay, keycode, 0);
+    //keysym = XKeycodeToKeysym(xdisplay, keycode, 0);
+    keysym = XkbKeycodeToKeysym(xdisplay, keycode, 0, 0);
     if (!keysym) {
       // X did not map this key, return keycode with 0x8000:
       keysym = keycode|0x8000;

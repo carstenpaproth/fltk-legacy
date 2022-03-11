@@ -102,7 +102,7 @@ int main(int argc, char** argv) {
     s->step(1);
     s->value(xy[n]);
     s->align(ALIGN_LEFT);
-    s->callback(slider_cb, (void*)n);
+    s->callback(slider_cb, (void*)(uintptr_t)n);
   }
 //   ToggleButton but(50,y,50,25,"points");
 //   but.callback(points_cb);

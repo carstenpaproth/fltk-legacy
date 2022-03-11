@@ -43,9 +43,9 @@ void DrawingWindow::cb_iterations(fltk::Slider* o, void* v) {
 }
 
 void DrawingWindow::make_window() {
-  fltk::Window* w;
+  //fltk::Window* w;
    {fltk::Window* o = window = new fltk::Window(430, 510);
-    w = o;
+    //w = o;
     o->set_vertical();
     o->shortcut(0xff1b);
     o->user_data((void*)(this));

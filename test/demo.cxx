@@ -50,7 +50,7 @@
 
 void doexit(fltk::Widget *, void *);
 void doback(fltk::Widget *, void *);
-void dobut(fltk::Widget *, long);
+void dobut(fltk::Widget *, uintptr_t);
 
 fltk::Window *form;
 fltk::Button *but[9];
@@ -81,7 +81,7 @@ void create_the_forms() {
   obj = but[8] = new fltk::Button(240,290,90,90);
   for (int i=0; i<9; i++) {
     but[i]->set_flag(fltk::ALIGN_WRAP);
-    but[i]->callback(dobut, i);
+    but[i]->callback(dobut, (uintptr_t)i);
   }
   obj = new fltk::Button(130,410,110,30,"Exit");
   obj->callback(doexit);
@@ -199,7 +199,7 @@ void pop_menu()
 
 /* The callback Routines */
 
-void dobut(fltk::Widget *, long arg)
+void dobut(fltk::Widget *, uintptr_t arg)
 /* handles a button push */
 {
   int men = find_menu(stack[stsize-1]);

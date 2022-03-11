@@ -66,7 +66,7 @@
 #define BGCOLOUR     0xF4F4EC00
 #define SLIDERCOLOUR 0xC7DAFF00
 #define BUTTONCOLOUR fltk::GRAY75
-#define BARCOLOUR    fltk::lerp(fltk::GRAY75, 0x8EA2E200, .1)
+#define BARCOLOUR    fltk::lerp(fltk::GRAY75, 0x8EA2E200, .1f)
 
 /* BS: The below is FLTK's attempt at a XP theme. 
    This may change though (2.0 being alpha, and all), so as a reference

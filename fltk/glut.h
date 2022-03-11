@@ -255,7 +255,7 @@ FL_GLUT_API void glutIdleFunc(void (*f)());
 
 // Warning: this cast may not work on all machines:
 inline void glutTimerFunc(unsigned int msec, void (*f)(int), int value) {
-  fltk::add_timeout(msec*.001f, (fltk::TimeoutHandler)f, (void *)value);
+  fltk::add_timeout(msec*.001f, (fltk::TimeoutHandler)f, (void *)(uintptr_t)value);
 }
 
 inline void glutMenuStateFunc(void (*f)(int state)) {

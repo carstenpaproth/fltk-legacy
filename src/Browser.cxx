@@ -1797,7 +1797,7 @@ RETURN:
 */
 void Browser::column_click_cb_(Widget *ww, void *d) {
   Browser *w = (Browser*)(ww->parent());
-  w->selected_column_ = int(long(d));
+  w->selected_column_ = int(uintptr_t(d));
   w->do_callback();
   w->selected_column_ = NO_COLUMN_SELECTED;
 }
@@ -1900,7 +1900,7 @@ void Browser::column_labels(const char **t) {
       if (i<nHeader) sides |= 2;
       header_[i] = new BButton(sides, column_labels_[i]);
       header_[i]->parent(this);
-      header_[i]->callback(column_click_cb_, (void*)i);
+      header_[i]->callback(column_click_cb_, (void*)(uintptr_t)i);
     }
     Group::current(g);
   }

@@ -76,7 +76,7 @@ fltk::CheckButton* bold_button, *italic_button;
 
 float pickedsize = 14.0f;
 
-void font_cb(fltk::Widget *, long) {
+void font_cb(fltk::Widget *, uintptr_t) {
   int fn = fontobj->value();
 //printf("font: %d    name: %s   bigname: %s\n", fn, fonts[fn]->name(), fonts[fn]->system_name());
 
@@ -142,7 +142,7 @@ void font_cb(fltk::Widget *, long) {
   button_group->redraw();
 }
 
-void encoding_cb(fltk::Widget *, long) {
+void encoding_cb(fltk::Widget *, uintptr_t) {
   int i = encobj->value();
   if (i < 0)
      return;
@@ -150,7 +150,7 @@ void encoding_cb(fltk::Widget *, long) {
   textobj->redraw();
 }
 
-void size_cb(fltk::Widget *, long) {
+void size_cb(fltk::Widget *, uintptr_t) {
   int i = sizeobj->value();
   if (i < 0) 
      return;

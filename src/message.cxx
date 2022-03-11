@@ -69,7 +69,7 @@ static NamedStyle i_style("Icon", i_revert, &fltk::icon_style);
 NamedStyle* fltk::icon_style = &i_style;
 
 static int button_number;
-static void set_button_number(Widget* w, long a) {
+static void set_button_number(Widget* w, uintptr_t a) {
   button_number = a;
   w->window()->make_exec_return(false);
 }

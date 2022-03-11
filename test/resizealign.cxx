@@ -36,7 +36,7 @@ using namespace fltk;
 Window *window;
 int flags = 0;
 
-void b_cb(Widget *b,long w) {
+void b_cb(Widget *b,uintptr_t w) {
   if (((Button*)b)->value()) flags |= int(w);
   else flags &= ~int(w);
   window->resize_align(flags);

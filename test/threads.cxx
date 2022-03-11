@@ -70,7 +70,7 @@ void* prime_func(void* p)
 	browser->add(s);
 	browser->bottomline(browser->size());
 	if (n > value->value()) value->value(n);
-	fltk::awake((void*) (browser == browser1? p:0));	// Cause the browser to redraw ...
+	fltk::awake((void*) (uintptr_t)(browser == browser1? p:0));	// Cause the browser to redraw ...
 	fltk::unlock();
 	break;
       }

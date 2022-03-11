@@ -63,8 +63,8 @@ esac
 
 dnl Don't automatically add "-g" to compiler options...
 CFLAGS="${CFLAGS:=}"
-CPPFLAGS="${CPPFLAGS:=}"
-CXXFLAGS="${CXXFLAGS:=}"
+CPPFLAGS="${CPPFLAGS:=-std=c++11}"
+CXXFLAGS="${CXXFLAGS:=-std=c++11}"
 OPTIM="${OPTIM:=}"
 
 AC_SUBST(OPTIM)

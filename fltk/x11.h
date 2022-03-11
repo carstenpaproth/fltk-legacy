@@ -50,6 +50,7 @@ header files directly.
 #    pragma set woff 3322
 #   endif
 #   include <X11/Xlib.h>
+#   include <X11/XKBlib.h>
 #   include <X11/Xutil.h>
 #   if !defined(__GNUC__) && (defined(_ABIN32) || defined(_ABI64))
 #    pragma reset woff 3322

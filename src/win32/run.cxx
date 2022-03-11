@@ -1240,7 +1240,7 @@ public:
 // enter/leave notification under Windows.
 //
 
-//#define NO_TRACK_MOUSE 1
+#define NO_TRACK_MOUSE 1
 
 #ifndef NO_TRACK_MOUSE
 extern "C" {

@@ -56,7 +56,7 @@ int number_from_text(const char* text, const Enumeration* table)
 const char* number_to_text(int number, const Enumeration* table)
 {
   if (table) {
-    const char* t = to_text((void*)number, table);
+    const char* t = to_text((void*)(uintptr_t)number, table);
     if (t) return t;
   }
   static char buffer[20];

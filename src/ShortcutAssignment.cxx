@@ -91,8 +91,8 @@ static shortcutAssociationType shortcutAssociation;
   they are interested in).  */
 bool Widget::add_shortcut(unsigned key) {
   if (!key) return false;
-  if (find(shortcutAssociation, (void*)key)) return false;
-  add(shortcutAssociation, (void*)key);
+  if (find(shortcutAssociation, (void*)(uintptr_t)key)) return false;
+  add(shortcutAssociation, (void*)(uintptr_t)key);
   return true;
 }
 
@@ -101,7 +101,7 @@ bool Widget::add_shortcut(unsigned key) {
   Delete a shortcut assignment. Returns true if it actually existed.
 */
 bool Widget::remove_shortcut(unsigned key) {
-  return remove(shortcutAssociation, (void*)key);
+  return remove(shortcutAssociation, (void*)(uintptr_t)key);
 }
 
 
@@ -120,7 +120,7 @@ void Widget::remove_shortcuts() {
   than onle you must use fltk::list_shortcuts(this).
 */
 unsigned Widget::shortcut() const {
-  return unsigned(long(get(shortcutAssociation)));
+  return unsigned(uintptr_t(get(shortcutAssociation)));
 }
 
 
@@ -130,7 +130,7 @@ unsigned Widget::shortcut() const {
   The result is exactly one shortcut (or none if \a key is zero).
 */
 void Widget::shortcut(unsigned key) {
-  set(shortcutAssociation, (void*)key);
+  set(shortcutAssociation, (void*)(uintptr_t)key);
 }
 
 
@@ -209,7 +209,7 @@ class keyCompareFunctor : public AssociationFunctor {
     bool handle(const AssociationType&, const Widget*, void* data) {
       count++;
 
-      unsigned shortcut = unsigned(long(data));
+      unsigned shortcut = unsigned(uintptr_t(data));
 
       // turn letters into lower-case to match event_key()
       if (!(shortcut & 0xff00u))
@@ -272,7 +272,7 @@ public:
   ShortcutFunctor& f;
   GlueFunctor(ShortcutFunctor& g) : f(g) {}
   bool handle(const AssociationType&, const Widget* widget, void* data) {
-    return f.handle(widget, unsigned(long(data)));
+    return f.handle(widget, unsigned(uintptr_t(data)));
   }
 };
 
@@ -307,7 +307,7 @@ f() {
 */
 unsigned fltk::foreachShortcut(const Widget* widget, ShortcutFunctor& f) {
   GlueFunctor g(f);
-  return unsigned(long(foreach(&shortcutAssociation, widget, g)));
+  return unsigned(uintptr_t(foreach(&shortcutAssociation, widget, g)));
 }
 
 // End of $Id$

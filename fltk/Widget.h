@@ -24,6 +24,7 @@
 #ifndef fltk_Widget_h
 #define fltk_Widget_h
 
+#include <cstdint>
 #include "Style.h"
 #include "Rectangle.h"
 
@@ -40,7 +41,7 @@ struct Cursor;
 typedef void (Callback )(Widget*, void*); /**< Callback is a function pointer to a fltk callback mechanism. It points to any function void foo(Widget*, void*) */
 typedef Callback* Callback_p; /**< A pointer to a Callback. Needed for BORLAND */
 typedef void (Callback0)(Widget*); /**< Function pointer to a callback with only one argument, the widget */
-typedef void (Callback1)(Widget*, long); /**<Function pointer to a callback with a long argument instead of a void argument*/
+typedef void (Callback1)(Widget*, uintptr_t); /**<Function pointer to a callback with a long argument instead of a void argument*/
 
 #ifdef FLTK_1_WIDGET  // back-compatability section:
 FL_API Font* font(int);
@@ -117,18 +118,18 @@ public:
   void	callback(Callback* c, void* p) { callback_=c; user_data_=p; }
   void	callback(Callback* c)	{ callback_=c; }
   void	callback(Callback0*c)	{ callback_=(Callback*)c; }
-  void	callback(Callback1*c, long p=0) { callback_=(Callback*)c; user_data_=(void*)p; }
+  void	callback(Callback1*c, uintptr_t p=0) { callback_=(Callback*)c; user_data_=(void*)p; }
   void*	user_data() const	{ return user_data_; }
   void	user_data(void* v)	{ user_data_ = v; }
-  long	argument() const	{ return (long)user_data_; }
-  void	argument(long v)	{ user_data_ = (void*)v; }
+  uintptr_t	argument() const	{ return (uintptr_t)user_data_; }
+  void	argument(uintptr_t v)	{ user_data_ = (void*)v; }
   uchar when() const		{ return when_; }
   void	when(uchar i)		{ when_ = i; }
 
   static void default_callback(Widget*, void*);
   void	do_callback()		{ callback_(this,user_data_); }
   void	do_callback(Widget* o,void* arg=0) { callback_(o,arg); }
-  void	do_callback(Widget* o,long arg) { callback_(o,(void*)arg); }
+  void	do_callback(Widget* o,uintptr_t arg) { callback_(o,(void*)arg); }
   bool	contains(const Widget*) const;
   bool	inside(const Widget* o) const { return o && o->contains(this); }
   bool	pushed() const		;

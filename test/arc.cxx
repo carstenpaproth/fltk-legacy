@@ -102,7 +102,7 @@ int main(int argc, char** argv) {
     s->value(dargs[n]);
 	s->clear_flag(ALIGN_MASK);
     s->set_flag(ALIGN_LEFT);
-    s->callback(slider_cb, (void*)n);
+    s->callback(slider_cb, (void*)(uintptr_t)n);
   }
 
   window.end();

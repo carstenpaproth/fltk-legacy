@@ -558,7 +558,7 @@ static void input_cb(Widget* o, void*) {
   recursion = false;
 }
 
-static void mode_cb(Widget* o, long int v) {
+static void mode_cb(Widget* o, uintptr_t v) {
   mode = int(v);
   // force them to redraw even if value is the same:
   rvalue->value(-2);

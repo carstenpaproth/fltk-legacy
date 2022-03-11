@@ -308,7 +308,7 @@ void glutSetWindow(int win) {
 #define MAXMENUS 32
 static Menu* menus[MAXMENUS+1];
 
-static void item_cb(Widget* w, long v) {
+static void item_cb(Widget* w, uintptr_t v) {
   void* cb = w->parent()->user_data(); // get call passed to glutCreateMenu
   // v should work but there is an fltk (mis)feature that if it is zero
   // then the one from the menu is passed.
@@ -349,7 +349,7 @@ void glutDestroyMenu(int n) {
 void glutAddMenuEntry(const char *label, int value) {
   menus[glut_menu]->begin();
   Item* m = new Item(label);
-  m->callback(item_cb,(long)value);
+  m->callback(item_cb,(uintptr_t)value);
 }
 
 void glutAddSubMenu(const char *label, int submenu) {
