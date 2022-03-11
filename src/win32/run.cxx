@@ -1681,7 +1681,7 @@ static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
   }
 
   case WM_MOUSEHWHEEL: {
-	  puts("MOUSEHWHEEL!");
+	  //puts("MOUSEHWHEEL!");
     static int xdelta = 0;
     xdelta -= (SHORT)(HIWORD(wParam));
     if ((e_dx = xdelta / WHEEL_DELTA)) {
@@ -1695,6 +1695,7 @@ static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
       xdelta -= e_dx * WHEEL_DELTA;
       handle(MOUSEWHEEL, xmousewin ? xmousewin : window);
     }
+    return 0;
   }
 
   case WM_GETMINMAXINFO:
@@ -1757,6 +1758,9 @@ static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 	  newRect.w( pos->cx-r.w() );
 	  newRect.h( pos->cy-r.h() );
 	}
+	int maxh = GetSystemMetrics(SM_CYMAXIMIZED);
+	if (newRect.h() > maxh - r.h())
+		newRect.h(maxh - r.h());
 	if ( window->resize( newRect.x(), newRect.y(), newRect.w(), newRect.h() ) ) {
 	  window->layout_damage( window->layout_damage() | LAYOUT_USER );
 	  window->layout();
