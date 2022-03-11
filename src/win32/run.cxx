@@ -1727,7 +1727,7 @@ static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
     flush();
     break;
 
-  case WM_WINDOWPOSCHANGING:
+  case WM_WINDOWPOSCHANGED:
     {
       if (!window || window->parent()) break; // ignore child windows
       // fltk does not think making a window iconic is a size change, but
@@ -1758,9 +1758,6 @@ static LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 	  newRect.w( pos->cx-r.w() );
 	  newRect.h( pos->cy-r.h() );
 	}
-	int maxh = GetSystemMetrics(SM_CYMAXIMIZED);
-	if (newRect.h() > maxh - r.h())
-		newRect.h(maxh - r.h());
 	if ( window->resize( newRect.x(), newRect.y(), newRect.w(), newRect.h() ) ) {
 	  window->layout_damage( window->layout_damage() | LAYOUT_USER );
 	  window->layout();
