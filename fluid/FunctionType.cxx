@@ -255,108 +255,108 @@ void FunctionType::write_code() {
     FluidType *child;
     char attr[256];
     if (attributes) {
-      strlcpy(attr, attributes, sizeof(attr));
-      strlcat(attr, " ", sizeof(attr));
+        strlcpy(attr, attributes, sizeof(attr));
+        strlcat(attr, " ", sizeof(attr));
     } else
-	attr[0] = 0;
+        attr[0] = 0;
     for (child = first_child; child; child = child->next_brother)
-	if (child->is_widget()) {
-	    havewidgets = 1;
-	    last_group = (WidgetType*)child;
-	}
-	write_c("\n");
-	if (ismain()) {
-	    write_c("#include <fltk/run.h>\n\n");
-	    write_c("int main%s(int argc, char **argv)%s\n",
-		gno_space_parens ? "" : " ", get_opening_brace(1));
-	    // write_c("int main(int argc, char **argv) {\n");
-	    if (havewidgets)
-		rtype = last_group->subclass();
-	    else 
-		rtype = "void";
-	} else {
-	    const char* star = "";
-	    // from matt: let the user type "static " at the start of type
-	    // in order to declare a static method;
-	    int is_static = 0;
-	    int is_virtual = 0;
-	    if (rtype) {
-		if (!strcmp(rtype,"static")) {is_static = 1; rtype = 0;}
-		else if (!strncmp(rtype, "static ",7)) {is_static = 1; rtype += 7;}
-		if (!strcmp(rtype, "virtual")) {is_virtual = 1; rtype = 0;}
-		else if (!strncmp(rtype, "virtual ",8)) {is_virtual = 1; rtype += 8;}
-	    }
-	    if (!rtype) {
-		if (havewidgets) {
-		    rtype = last_group->subclass();
-		    star = "*";
-		} else rtype = "void";
-	    }
-	    
-	    const char* k = member_of(0);
-	    if (k) {
-		write_public(public_);
-		if (name()[0] == '~')
-		    constructor = 1;
-		else {
-		    size_t n = strlen(k);
-		    if (!strncmp(name(), k, n) && name()[n] == '(') constructor = 1;
-		}
-		write_h(get_indent_string(1));
-		if (is_static) write_h("static ");
-		if (is_virtual) write_h("virtual ");
-		if (!constructor) {
-		    write_h("%s%s%s ", attr, rtype, star);
-		    write_c("%s%s ", rtype, star);
-		}
-		
-		// if this is a subclass, only write_h() the part before the ':'
-		char s[1024], *sptr = s;
-		char *nptr = (char *)name();
-		
-		while (*nptr) {
-		    if (*nptr == ':') {
-			if (nptr[1] != ':') break;
-			// Copy extra ":" for "class::member"...
-			*sptr++ = *nptr++;
-		    }	  
-		    *sptr++ = *nptr++;
-		}
-		*sptr = '\0';
-		
-		if(constructor)	// already wrote this for constructors.
-		    write_h("%s", attr);
-		write_h("%s;\n", s);
-		write_c("%s::%s%s", k, strip_default_args(name()), get_opening_brace(1));
-	    } else {
-		if (public_) {
-		    if (cdecl_)
-			write_h("extern \"C\" { %s%s%s %s; }\n", attr, rtype, star, name());
-		    else
-			write_h("%s%s%s %s;\n", attr, rtype, star, name());
-		}
-		else write_c("static ");
-		write_c("%s%s %s%s", rtype, star, name(), get_opening_brace(1));
-	    }
-	}
-	indentation += 2;
-	if(havewidgets) 
-	    write_c("%s%s* w;\n", indent(), last_group->subclass());
-	
-	for (FluidType* q = first_child; q; q = q->next_brother) q->write_code();
-	
-	if (ismain()) {
-	    if (havewidgets) write_c("%sw->show(argc, argv);\n", get_indent_string(1));
-	    write_c("%sreturn %s%sfltk::run()%s;\n", get_indent_string(1),
-		gno_space_parens ? "" : " ",
-		galways_return_parens ? "(" : "", galways_return_parens ? ")" : "");
-	} else if (havewidgets && !constructor && !return_type)
-	    write_c("%sreturn %s%sw%s;\n", get_indent_string(1), 
-	    gno_space_parens ? "" : " ",
-	    galways_return_parens ? "(" : "", galways_return_parens ? ")" : "");
-	write_c("}\n");
-	indentation -= 2;
-	if (indentation < 0) indentation = 0;
+        if (child->is_widget()) {
+            havewidgets = 1;
+            last_group = (WidgetType*)child;
+        }
+    write_c("\n");
+    if (ismain()) {
+        write_c("#include <fltk/run.h>\n\n");
+        write_c("int main%s(int argc, char **argv)%s\n",
+            gno_space_parens ? "" : " ", get_opening_brace(1));
+        // write_c("int main(int argc, char **argv) {\n");
+        if (havewidgets)
+            rtype = last_group->subclass();
+        else 
+            rtype = "void";
+    } else {
+        const char* star = "";
+        // from matt: let the user type "static " at the start of type
+        // in order to declare a static method;
+        int is_static = 0;
+        int is_virtual = 0;
+        if (rtype) {
+            if (!strcmp(rtype,"static")) {is_static = 1; rtype = 0;}
+            else if (!strncmp(rtype, "static ",7)) {is_static = 1; rtype += 7;}
+            if (!strcmp(rtype, "virtual")) {is_virtual = 1; rtype = 0;}
+            else if (!strncmp(rtype, "virtual ",8)) {is_virtual = 1; rtype += 8;}
+        }
+        if (!rtype) {
+            if (havewidgets) {
+                rtype = last_group->subclass();
+                star = "*";
+            } else rtype = "void";
+        }
+        
+        const char* k = member_of(0);
+        if (k) {
+            write_public(public_);
+            if (name()[0] == '~')
+                constructor = 1;
+            else {
+                size_t n = strlen(k);
+                if (!strncmp(name(), k, n) && name()[n] == '(') constructor = 1;
+            }
+            write_h(get_indent_string(1));
+            if (is_static) write_h("static ");
+            if (is_virtual) write_h("virtual ");
+            if (!constructor) {
+                write_h("%s%s%s ", attr, rtype, star);
+                write_c("%s%s ", rtype, star);
+            }
+            
+            // if this is a subclass, only write_h() the part before the ':'
+            char s[1024], *sptr = s;
+            char *nptr = (char *)name();
+            
+            while (*nptr) {
+                if (*nptr == ':') {
+                    if (nptr[1] != ':') break;
+                    // Copy extra ":" for "class::member"...
+                    *sptr++ = *nptr++;
+                }	  
+                *sptr++ = *nptr++;
+            }
+            *sptr = '\0';
+            
+            if(constructor)	// already wrote this for constructors.
+                write_h("%s", attr);
+            write_h("%s;\n", s);
+            write_c("%s::%s%s", k, strip_default_args(name()), get_opening_brace(1));
+        } else {
+            if (public_) {
+                if (cdecl_)
+                    write_h("extern \"C\" { %s%s%s %s; }\n", attr, rtype, star, name());
+                else
+                    write_h("%s%s%s %s;\n", attr, rtype, star, name());
+            }
+            else write_c("static ");
+            write_c("%s%s %s%s", rtype, star, name(), get_opening_brace(1));
+        }
+    }
+    indentation += 2;
+    if(havewidgets) 
+        write_c("%s%s* w;\n", indent(), last_group->subclass());
+    
+    for (FluidType* q = first_child; q; q = q->next_brother) q->write_code();
+    
+    if (ismain()) {
+        if (havewidgets) write_c("%sw->show(argc, argv);\n", get_indent_string(1));
+        write_c("%sreturn %s%sfltk::run()%s;\n", get_indent_string(1),
+            gno_space_parens ? "" : " ",
+            galways_return_parens ? "(" : "", galways_return_parens ? ")" : "");
+    } else if (havewidgets && !constructor && !return_type)
+        write_c("%sreturn %s%sw%s;\n", get_indent_string(1), 
+        gno_space_parens ? "" : " ",
+        galways_return_parens ? "(" : "", galways_return_parens ? ")" : "");
+    write_c("}\n");
+    indentation -= 2;
+    if (indentation < 0) indentation = 0;
 }
 
 ////////////////////////////////////////////////////////////////
