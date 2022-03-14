@@ -1555,16 +1555,19 @@ bool fltk::handle()
     unsigned n = xevent.xbutton.button;
     e_keysym = n;
     set_event_xy(false);
-    if (n == wheel_up_button || n == wheel_down_button || n == wheel_left_button || n == wheel_right_button) return 1;
-    e_state &= ~BUTTON(n);
-    event = RELEASE;}
+    if (n == wheel_up_button || n == wheel_down_button || n == wheel_left_button || n == wheel_right_button) {
+        event = MOUSEWHEEL;
+    } else {
+        e_state &= ~BUTTON(n);
+        event = RELEASE;
+    }}
     set_stylus_data();
     goto J1;
 
   case EnterNotify:
     set_event_xy(false);
     e_state = (xevent.xcrossing.state & XSTATE_MASK) << 16;
-    if (xevent.xcrossing.detail == NotifyInferior) {event=MOVE; break;}
+    if (xevent.xcrossing.detail == NotifyInferior) {event=MOVE; goto J1;}
 //      printf("EnterNotify window %s, xmousewin %s\n",
 //	   window ? window->label() : "NULL",
 //	   xmousewin ? xmousewin->label() : "NULL");
