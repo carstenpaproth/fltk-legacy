@@ -132,7 +132,7 @@ void template_clear() {
 
 void template_load() {
   int i;
-  char name[1024], filename[1024], path[1024], *ptr;
+  char name[1024], filename[2048], path[1024], *ptr;
   struct dirent **files;
   int num_files;
   

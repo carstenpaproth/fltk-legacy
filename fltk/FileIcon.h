@@ -70,7 +70,7 @@ public:
   };
 
   FileIcon(const char *p, int t, int nd = 0, short *d = 0);
-  FileIcon(const FileIcon& f) ; 
+  //FileIcon(const FileIcon& f) ; 
   ~FileIcon();
 
   short		*add(short d);

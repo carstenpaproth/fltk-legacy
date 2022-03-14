@@ -446,10 +446,11 @@ static void normalize(GLfloat v[3])
 {
   GLfloat d = sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
 
-  if (d == 0)
+  if (d == 0) {
     fprintf(stderr, "Zero length vector in normalize\n");
-  else
+  } else {
     v[0] /= d; v[1] /= d; v[2] /= d;
+  }
 }
 
   /* calculates a normalized crossproduct to v1, v2 */

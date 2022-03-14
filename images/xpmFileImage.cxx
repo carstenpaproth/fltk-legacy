@@ -66,7 +66,8 @@ static char** read(char *name, int oneline = 0) {
     while (*q != '\"' && p < buffer+MAXSIZE) {
       if (*q == '\\') switch (*++q) {
       case '\n':
-	if(fgets(q,(buffer+MAXSIZE+20)-q,f)) /*Ignore the unused result*/; break;
+	if(fgets(q,(buffer+MAXSIZE+20)-q,f)) /*Ignore the unused result*/;
+        break;
       case 0:
 	break;
       case 'x': {

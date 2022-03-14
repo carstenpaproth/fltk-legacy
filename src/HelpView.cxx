@@ -2297,7 +2297,7 @@ Color HelpView::get_color(const char *n, Color c) {
 SharedImage* HelpView::get_image(const char *name, int W, int H) {
   const char	*localname;		// Local filename
   char		dir[1024];		// Current directory
-  char		temp[1024],		// Temporary filename
+  char		temp[2048],		// Temporary filename
 		*tempptr;		// Pointer into temporary name
   SharedImage *ip;			// Image pointer...
 
@@ -2306,7 +2306,8 @@ SharedImage* HelpView::get_image(const char *name, int W, int H) {
     if (name[0] == '/') {
       strlcpy(temp, directory_, sizeof(temp));
 
-      if ((tempptr = strrchr(strchr(directory_, ':') + 3, '/')) != NULL) {
+      //if ((tempptr = strrchr(strchr(directory_, ':') + 3, '/')) != NULL) {
+      if ((tempptr = strrchr(strchr(temp, ':') + 3, '/')) != NULL) {
         strlcpy(tempptr, name, sizeof(temp) - (tempptr - temp));
       } else {
         strlcat(temp, name, sizeof(temp));
@@ -2418,7 +2419,7 @@ int HelpView::handle(int event)	{
     if (strcmp(linkp->filename, filename_) != 0 && linkp->filename[0])
     {
       char	dir[1024];	// Current directory
-      char	temp[1024],	// Temporary filename
+      char	temp[2048],	// Temporary filename
 		*tempptr;	// Pointer into temporary filename
 
 
@@ -2605,7 +2606,7 @@ int HelpView::load(const char *f) {
   char		*target;	// Target in file
   char		*slash;		// Directory separator
   const char	*localname;	// Local filename
-  char		error[1024];	// Error buffer
+  char		error[2048];	// Error buffer
   char		newname[1024];	// New filename buffer
 
 

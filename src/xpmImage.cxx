@@ -110,7 +110,8 @@ bool xpmImage::fetch(Image& i, const char * const * array) {
       // look for "c word", or last word if none:
       const uchar *previous_word = p;
       for (;;) {
-	while (*p && isspace(*p)) p++; uchar what = *p++;
+	while (*p && isspace(*p)) p++;
+        uchar what = *p++;
 	while (*p && !isspace(*p)) p++;
 	while (*p && isspace(*p)) p++;
 	if (!*p) break;

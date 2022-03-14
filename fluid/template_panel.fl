@@ -142,7 +142,7 @@ template_browser->clear();} {}
 Function {template_load()} {open return_type void
 } {
   code {int i;
-char name[1024], filename[1024], path[1024], *ptr;
+char name[1024], filename[2048], path[1024], *ptr;
 struct dirent **files;
 int num_files;
 

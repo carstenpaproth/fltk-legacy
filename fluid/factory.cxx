@@ -142,7 +142,7 @@ int reading_file;
 static FluidType *FluidType_make(const char *tn, fltk::ItemGroup * menu) {
   FluidType *r = 0;
   fltk::Item * m=0;
-  char menuName[128];
+  char menuName[256];
   int n;
 
   reading_file = 1; // makes labels be null

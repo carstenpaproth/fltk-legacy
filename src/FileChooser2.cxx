@@ -534,7 +534,7 @@ void FileChooser::favoritesCB(Widget *w) {
 
 void FileChooser::fileListCB() {
   char	*filename,			// New filename
-	pathname[1024];			// Full pathname to file
+	pathname[2048];			// Full pathname to file
 
  int cval = fileList->value();
  if (cval<0  || !(filename = (char *)fileList->child(cval)->label())) return;
@@ -595,9 +595,12 @@ void FileChooser::fileListCB() {
     if (*filename == '/') *filename = '\0';
 
     if (!fltk::filename_isfile(pathname)) {
+      char tempname[3072];
       filename = strrchr((char*)fileName->text(), '/');
       if (filename && filename+1) filename++;
-      sprintf(pathname, "%s%s%s", pathname, filename ? "/" : "", filename ? filename : "");
+      //sprintf(pathname, "%s%s%s", pathname, filename ? "/" : "", filename ? filename : "");
+      sprintf(tempname, "%s%s%s", pathname, filename ? "/" : "", filename ? filename : "");
+      strlcpy(pathname, tempname, sizeof(pathname));
     }
     fileName->value(pathname);
 
@@ -722,7 +725,7 @@ void FileChooser::fileNameCB() {
       directory(pathname, false);
 
       if (filename[0]) {
-	char tempname[1024];
+	char tempname[2048];
 
 	snprintf(tempname, sizeof(tempname), "%s/%s", directory_, filename);
 	fileName->text(tempname);
@@ -876,7 +879,7 @@ void FileChooser::filter(const char *p) {
 
 void FileChooser::newdir() {
   const char	*dir;		// New directory name
-  char		pathname[1024];	// Full path of directory
+  char		pathname[2048];	// Full path of directory
 
 
   // Get a directory name from the user
@@ -1235,7 +1238,7 @@ const char * FileChooser::value(int f) {
   int		i;		// Looping var
   int		fcount;		// Number of selected files
   const char	*name;		// Current filename
-  static char	pathname[1024];	// Filename + directory
+  static char	pathname[2048];	// Filename + directory
 
 
   name = fileName->text();

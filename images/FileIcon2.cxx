@@ -323,7 +323,7 @@ FileIcon::load_system_icons(void)
 {
   int		i;		// Looping var
   FileIcon	*icon;		// New icons
-  char		filename[1024];	// Filename
+  char		filename[2048];	// Filename
   char		icondir[1024];	// Icon directory
   static int	init = 0;	// Have the icons been initialized?
   const char * const icondirs[] = {
@@ -571,7 +571,7 @@ load_kde_mimelnk(const char *filename,	// I - mimelnk filename
   char		pattern[1024];
   char		mimetype[1024];
   char		*val;
-  char		full_iconfilename[1024];
+  char		full_iconfilename[2048];
   FileIcon	*icon;
 
 

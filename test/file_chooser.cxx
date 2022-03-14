@@ -152,7 +152,7 @@ pdf_check(const char *name,	// I - Name of file
 {
   const char	*home;		// Home directory
   char		preview[1024],	// Preview filename
-		command[1024];	// Command
+		command[2048];	// Command
 
 
   if (memcmp(header, "%PDF", 4) != 0)
@@ -184,7 +184,7 @@ ps_check(const char *name,	// I - Name of file
   const char	*home;		// Home directory
   char		preview[1024],	// Preview filename
 		outname[1024],	// Preview PS file
-		command[1024];	// Command
+		command[3072];	// Command
   FILE		*in,		// Input file
 		*out;		// Output file
   int		page;		// Current page
@@ -325,7 +325,8 @@ main(int  argc,		// I - Number of command-line arguments
   icon = new FileIcon("butt", FileIcon::DIRECTORY);
   icon->load_image("./images/folder.png");
 #else
-  icon   = new FileIcon(*FileIcon::find(".", FileIcon::DIRECTORY));
+  //icon   = new FileIcon(*FileIcon::find(".", FileIcon::DIRECTORY));
+  icon   = FileIcon::find(".", FileIcon::DIRECTORY);
 #endif
   icon->value(button);
 

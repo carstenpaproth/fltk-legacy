@@ -112,6 +112,7 @@ FileIcon::FileIcon(const char *p,	/* I - Filename pattern */
 }
 
 //! deep copy implementation
+/*
 FileIcon::FileIcon(const FileIcon& f) {
   char n[1024]="";
   if (&f==0) {
@@ -128,6 +129,7 @@ FileIcon::FileIcon(const FileIcon& f) {
     memcpy(data_, f.data_, f.alloc_data_*sizeof(short));
   }
 }
+*/
 //
 // 'FileIcon::~FileIcon()' - Remove a file icon.
 //

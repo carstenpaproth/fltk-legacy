@@ -266,7 +266,12 @@ void redraw_browser() {
 }
 
 FluidType::FluidType() {
-  memset(this, 0, sizeof(FluidType));
+  //memset(this, 0, sizeof(FluidType));
+  name_ = label_ = tooltip_ = callback_ = user_data_ = user_data_type_ = 0;
+  live_widget = 0;
+  parent = first_child = next_brother = previous_brother = factory = 0;
+  open_ = new_selected = selected_ = 0;
+
   code_line = header_line = code_line_end = header_line_end = -1;
 
 }

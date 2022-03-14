@@ -644,8 +644,10 @@ void read_fdesign() {
       } else {
 	for (int i = 0; class_matcher[i]; i += 2)
 	  if (!strcmp(value,class_matcher[i])) {
-	    value = class_matcher[i+1]; break;}
-	  widget = (WidgetType*)FluidType::make(value);
+	    value = class_matcher[i+1];
+            break;
+          }
+	widget = (WidgetType*)FluidType::make(value);
 	if (!widget) {
 	  printf("class %s not found, using fltk::Button\n", value);
 	  widget = (WidgetType*)FluidType::make("fltk::Button");
