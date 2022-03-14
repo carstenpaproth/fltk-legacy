@@ -16,6 +16,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fltk_images", "fltk_images.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fltk_opengl", "fltk_opengl.vcxproj", "{A1660643-CBDC-48E4-9F90-E899A9332253}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fluid", "fluid.vcxproj", "{F62407B3-E454-46B4-AC51-396D0BA62519}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug Cairo|Win32 = Debug Cairo|Win32
@@ -140,6 +142,19 @@ Global
 		{A1660643-CBDC-48E4-9F90-E899A9332253}.Release|Win32.Build.0 = Release|Win32
 		{A1660643-CBDC-48E4-9F90-E899A9332253}.Release|x64.ActiveCfg = Release|x64
 		{A1660643-CBDC-48E4-9F90-E899A9332253}.Release|x64.Build.0 = Release|x64
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Debug Cairo|Win32.ActiveCfg = Debug Cairo|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Debug Cairo|Win32.Build.0 = Debug Cairo|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Debug Cairo|x64.ActiveCfg = Debug Cairo|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Debug|Win32.Build.0 = Debug|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Debug|x64.ActiveCfg = Debug|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Release MinSize|Win32.ActiveCfg = Release MinSize|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Release MinSize|Win32.Build.0 = Release MinSize|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Release MinSize|x64.ActiveCfg = Release MinSize|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Release|Win32.ActiveCfg = Release|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Release|Win32.Build.0 = Release|Win32
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Release|x64.ActiveCfg = Release|x64
+		{F62407B3-E454-46B4-AC51-396D0BA62519}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
