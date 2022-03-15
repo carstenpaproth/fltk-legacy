@@ -234,7 +234,7 @@ static int innards(
     if (blabels[i][0] == '*') {blabels[i]++; default_button = i;}
   }
   // Take into account the default glyph size of the return button
-  counter_bx += 2*getsize();
+  counter_bx += (int)(2*getsize());
   
   // Move the starting point back as far as it needs.
   int bx = window.w() - counter_bx;

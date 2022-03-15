@@ -1867,7 +1867,7 @@ public:
     if (h() == 0) {
       int wide, high;
       measure_label(wide, high);
-      h(high + leading() + 3);
+      h(high + (int)leading() + 3);
     }
     Button::layout();
   }

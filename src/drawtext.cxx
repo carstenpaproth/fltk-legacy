@@ -440,12 +440,12 @@ static void wrap(
 	// so add space to enhance the shortcut appearance 
 	// finally, the shortcut symbol should be centered for all platforms 
 	// whatever the font is so add a potential delta
-	float xdelta = (getwidth(p,1)-getwidth(us,1))/2.0;
+	float xdelta = (getwidth(p,1)-getwidth(us,1))/2.0f;
 	float ydelta =
 #ifndef	_WIN32
-	    (getdescent())/2.0;
+	    (getdescent())/2.0f;
 #else
-	(getdescent())/2.0 - 1.0;
+	(getdescent())/2.0f - 1.0f;
 #endif
 	add(0, us, us+1, x+xdelta, y+ascent+ydelta, getsize(),getsize(), ascent, spacing);
 }

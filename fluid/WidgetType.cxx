@@ -532,7 +532,7 @@ void when_cb(fltk::Choice* i, void *v) {
     i->value(e ? e-whenmenu : 0);
   } else {
     int m = i->value();
-    int n = int((long)(whenmenu[m].compiled));
+    int n = int((uintptr_t)(whenmenu[m].compiled));
     for_all_selected_widgets() {
       modflag = 1;
       WidgetType* q = (WidgetType*)o;
@@ -1283,7 +1283,7 @@ void subtype_cb(fltk::Choice* i, void* v) {
     i->redraw();
   } else {
     const Enumeration* table = current_widget->subtypes();
-    int n = int((long)(table[i->value()].compiled));
+    int n = int((uintptr_t)(table[i->value()].compiled));
     for_all_selected_widgets() {
       modflag = 1;
       WidgetType* q = (WidgetType*)o;
@@ -1768,7 +1768,7 @@ void WidgetType::write_widget_code() {
     for (int n = 0; n < 8; n++) if (i & (1<<n)) {
       if (!first) write_c("|");
       first = false;
-      write_c(number_to_text(1<<n, alignmenu));
+      write_c(number_to_text(uintptr_t(1)<<n, alignmenu));
     }
     if (first) write_c("fltk::ALIGN_CENTER");
     write_c(");\n");

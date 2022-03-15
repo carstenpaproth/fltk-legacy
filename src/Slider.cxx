@@ -303,7 +303,7 @@ void Slider::draw_ticks(const Rectangle& r, int min_spacing)
         drawline(x1+dx*t, y1+dy*t, x2+dx*t, y2+dy*t);
         if (n%nummod == 0) {
           p = printtick(buffer, v);
-          x = x1+dx*t+1;
+          x = x1+dx*t+1.f;
           y = yt+dy*t;
           if (dx && (x < r.x()+3*min_spacing || x >= r.r()-5*min_spacing));
           else if (dy && (y < r.y()+5*min_spacing || y >= r.b()-3*min_spacing));
@@ -319,7 +319,7 @@ void Slider::draw_ticks(const Rectangle& r, int min_spacing)
         drawline(x1+dx*t, y1+dy*t, x2+dx*t, y2+dy*t);
         if (n%nummod == 0) {
           p = printtick(buffer, v);
-          x = x1+dx*t+1;
+          x = x1+dx*t+1.f;
           y = yt+dy*t;
           if (dx && (x < r.x()+3*min_spacing || x >= r.r()-5*min_spacing));
           else if (dy && (y < r.y()+5*min_spacing || y >= r.b()-3*min_spacing));
@@ -339,7 +339,7 @@ void Slider::draw_ticks(const Rectangle& r, int min_spacing)
   t = slider_position(v, w);
   drawline(x1+dx*t, y1+dy*t, x2+dx*t, y2+dy*t);
   p = printtick(buffer, v);
-  x = x1+dx*t+1;
+  x = x1+dx*t+1.f;
   y = yt+dy*t;
   setcolor(textcolor);
   drawtext(p, x,y);
@@ -349,7 +349,7 @@ void Slider::draw_ticks(const Rectangle& r, int min_spacing)
   t = slider_position(v, w);
   drawline(x1+dx*t, y1+dy*t, x2+dx*t, y2+dy*t);
   p = printtick(buffer, v);
-  x = x1+dx*t+1;
+  x = x1+dx*t+1.f;
   if (dx) {float w = getwidth(p); if (x+w > r.r()) x -= 2+w;}
   y = yt+dy*t;
   if (dy) y += getsize();
