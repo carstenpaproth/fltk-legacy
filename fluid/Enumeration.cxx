@@ -13,10 +13,10 @@ const Enumeration* from_value(void* data, const Enumeration* table)
   return 0;
 }
 
-const Enumeration* from_value(int data, const Enumeration* table)
+const Enumeration* from_value(uintptr_t data, const Enumeration* table)
 {
   for (;table->menu_entry; table++)
-    if (int((long)(table->compiled)) == data) return table;
+    if ((uintptr_t)table->compiled == data) return table;
   return 0;
 }
 
@@ -44,23 +44,23 @@ const char* to_text(void* data, const Enumeration* table)
   return 0;
 }
 
-int number_from_text(const char* text, const Enumeration* table)
+uintptr_t number_from_text(const char* text, const Enumeration* table)
 {
   if (table) {
     const Enumeration* t = from_text(text, table);
-    if (t) return int((long)(t->compiled));
+    if (t) return (uintptr_t)t->compiled;
   }
   return strtol(text, 0, 0);
 }
 
-const char* number_to_text(int number, const Enumeration* table)
+const char* number_to_text(uintptr_t number, const Enumeration* table)
 {
   if (table) {
-    const char* t = to_text((void*)(uintptr_t)number, table);
+    const char* t = to_text((void*)number, table);
     if (t) return t;
   }
-  static char buffer[20];
-  sprintf(buffer, "%d", number);
+  static char buffer[40];
+  sprintf(buffer, "%d", (int)number);
   return buffer;
 }
 

@@ -346,10 +346,10 @@ void glutDestroyMenu(int n) {
   menus[n] = 0;
 }
 
-void glutAddMenuEntry(const char *label, int value) {
+void glutAddMenuEntry(const char *label, uintptr_t value) {
   menus[glut_menu]->begin();
   Item* m = new Item(label);
-  m->callback(item_cb,(uintptr_t)value);
+  m->callback(item_cb, value);
 }
 
 void glutAddSubMenu(const char *label, int submenu) {

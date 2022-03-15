@@ -209,7 +209,7 @@ inline int glutGetMenu() {return glut_menu;}
 
 inline void glutSetMenu(int m) {glut_menu = m;}
 
-FL_GLUT_API void glutAddMenuEntry(const char *label, int value);
+FL_GLUT_API void glutAddMenuEntry(const char *label, uintptr_t value);
 
 FL_GLUT_API void glutAddSubMenu(const char *label, int submenu);
 
@@ -254,8 +254,10 @@ enum {GLUT_NOT_VISIBLE, GLUT_VISIBLE};
 FL_GLUT_API void glutIdleFunc(void (*f)());
 
 // Warning: this cast may not work on all machines:
-inline void glutTimerFunc(unsigned int msec, void (*f)(int), int value) {
-  fltk::add_timeout(msec*.001f, (fltk::TimeoutHandler)f, (void *)(uintptr_t)value);
+//inline void glutTimerFunc(unsigned int msec, void (*f)(int), uintptr_t value) {
+//  fltk::add_timeout(msec*.001f, (fltk::TimeoutHandler)f, (void *)value);
+inline void glutTimerFunc(unsigned int msec, fltk::TimeoutHandler f, uintptr_t value) {
+  fltk::add_timeout(msec*.001f, f, (void *)value);
 }
 
 inline void glutMenuStateFunc(void (*f)(int state)) {

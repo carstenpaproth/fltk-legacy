@@ -1,6 +1,8 @@
 #ifndef Enumeration_h
 #define Enumeration_h
 
+#include <cstdint>
+
 ////////////////////////////////////////////////////////////////
 // This structure is used to define tables of enumerations:
 
@@ -18,11 +20,11 @@ void set_menu(fltk::Menu*, const Enumeration*);
 
 // Converters from/to strings and values:
 const Enumeration* from_value(void* data, const Enumeration* table);
-const Enumeration* from_value(int data, const Enumeration* table);
+const Enumeration* from_value(uintptr_t data, const Enumeration* table);
 const Enumeration* from_text(const char* text, const Enumeration* table);
 const char* to_text(void* data, const Enumeration* table);
-int number_from_text(const char* text, const Enumeration* table);
-const char* number_to_text(int number, const Enumeration* table);
+uintptr_t number_from_text(const char* text, const Enumeration* table);
+const char* number_to_text(uintptr_t number, const Enumeration* table);
 
 ////////////////////////////////////////////////////////////////
 
