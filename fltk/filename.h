@@ -113,7 +113,7 @@ namespace fltk {
 // and redefined later, thus I'm going to leave this in. This may need to be modified at a future date....
 // \todo clean up the #define stat _stat
 #if defined (_WIN32) && !defined (__CYGWIN__)
-# define stat _stat
+# define stat _stati64
 #endif
 FL_API int fltk_stat(const char* name, struct stat *buffer);
 

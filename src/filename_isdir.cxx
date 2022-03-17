@@ -57,7 +57,7 @@ int fltk::fltk_stat(const char* name, struct stat *buffer) {
   int length = utf8towc(name, strlen(name), NULL, 0);
   nativeFilename = new wchar_t[length+2];
   utf8towc(name, strlen(name), nativeFilename, length+1);
-  int ret = _wstat(nativeFilename, buffer);
+  int ret = _wstati64(nativeFilename, buffer);
   delete [] nativeFilename;
 #else
   int ret = stat(name, buffer);

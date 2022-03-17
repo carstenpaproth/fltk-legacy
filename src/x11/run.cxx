@@ -1556,7 +1556,7 @@ bool fltk::handle()
     e_keysym = n;
     set_event_xy(false);
     if (n == wheel_up_button || n == wheel_down_button || n == wheel_left_button || n == wheel_right_button) {
-        event = MOUSEWHEEL;
+        event = NO_EVENT;
     } else {
         e_state &= ~BUTTON(n);
         event = RELEASE;
