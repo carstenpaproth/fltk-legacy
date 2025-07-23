@@ -597,7 +597,7 @@ void FileChooser::fileListCB() {
     if (!fltk::filename_isfile(pathname)) {
       char tempname[3072];
       filename = strrchr((char*)fileName->text(), '/');
-      if (filename && filename+1) filename++;
+      if (filename) filename++;
       //sprintf(pathname, "%s%s%s", pathname, filename ? "/" : "", filename ? filename : "");
       sprintf(tempname, "%s%s%s", pathname, filename ? "/" : "", filename ? filename : "");
       strlcpy(pathname, tempname, sizeof(pathname));

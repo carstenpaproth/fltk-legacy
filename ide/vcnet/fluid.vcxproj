@@ -520,6 +520,7 @@
     <ClInclude Include="..\..\fluid\undo.h" />
     <ClInclude Include="..\..\fluid\WidgetType.h" />
     <ClInclude Include="..\..\fluid\widget_panel.h" />
+    <ClInclude Include="..\..\fluid\Widget_Types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\fluid\about_panel.cxx" />

@@ -351,7 +351,7 @@ class ThumbWheelType : public WidgetType {
 };
 
 class TextDisplayType : public WidgetType {
-  int textstuff(int w, fltk::Font* f, int& s, fltk::Color c);
+  int textstuff(int w, fltk::Font* f, float& s, fltk::Color c);
  public:
   virtual void ideal_size(int &w, int &h) {
     fltk::TextDisplay *myo = (fltk::TextDisplay *)o;
@@ -376,7 +376,7 @@ class TextDisplayType : public WidgetType {
 };
 
 class TextEditorType : public WidgetType {
-  int textstuff(int w, fltk::Font* f, int& s, fltk::Color c);
+  int textstuff(int w, fltk::Font* f, float& s, fltk::Color c);
  public:
   virtual void ideal_size(int &w, int &h) {
     fltk::TextEditor *myo = (fltk::TextEditor *)o;
@@ -400,8 +400,7 @@ class TextEditorType : public WidgetType {
 };
 
 class FileInputType: public WidgetType {
-  fltk::Item *subtypes() {return 0;}
-  int textstuff(int w,fltk::Font* f, int& s, fltk::Color c);
+  int textstuff(int w,fltk::Font* f, float& s, fltk::Color c);
  public:
   virtual void ideal_size(int &w, int &h) {
     fltk::FileInput *myo = (fltk::FileInput *)o;

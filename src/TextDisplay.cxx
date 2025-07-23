@@ -97,7 +97,6 @@ static int countlines( const char *string);
 
 TextDisplay::TextDisplay(int X, int Y, int W, int H,  const char* l)
   : Group(X, Y, W, H, l), text_area(W,H) {
-  int i;
 
   damage_range1_start = damage_range1_end = -1;
   damage_range2_start = damage_range2_end = -1;
@@ -141,9 +140,6 @@ TextDisplay::TextDisplay(int X, int Y, int W, int H,  const char* l)
   visiblelines_cnt_ = 1;
   linestarts_ = new int[visiblelines_cnt_];
   linestarts_[0] = 0;
-  for (i=1; i<visiblelines_cnt_; i++) {
-    linestarts_[i] = -1;
-  }
   suppressresync_ = false;
   nlinesdeleted_ = 0;
   unfinished_style_ = 0;

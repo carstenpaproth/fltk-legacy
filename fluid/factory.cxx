@@ -91,11 +91,11 @@ const Enumeration output_type_menu[] = {
   {0}};
 
 ////////////////////////////////////////////////////////////////
-int TextEditorType::textstuff(int w, fltk::Font* f, int& s, fltk::Color c) {
+int TextEditorType::textstuff(int w, fltk::Font* f, float& s, fltk::Color c) {
     fltk::TextEditor *myo = (fltk::TextEditor*)(w==4 ? ((WidgetType*)factory)->o : o);
     switch (w) {
     case 4:
-    case 0: f = myo->textfont(); s = (int) myo->textsize(); c = myo->textcolor(); break;
+    case 0: f = myo->textfont(); s = myo->textsize(); c = myo->textcolor(); break;
     case 1: myo->textfont(f); break;
     case 2: myo->textsize((float)s); break;
     case 3: myo->textcolor(c); break;
@@ -103,11 +103,11 @@ int TextEditorType::textstuff(int w, fltk::Font* f, int& s, fltk::Color c) {
     return 1;
 }
 
-int TextDisplayType::textstuff(int w, fltk::Font* f, int& s, fltk::Color c) {
+int TextDisplayType::textstuff(int w, fltk::Font* f, float& s, fltk::Color c) {
   fltk::TextDisplay *myo = (fltk::TextDisplay*)(w==4 ? ((WidgetType*)factory)->o : o);
   switch (w) {
     case 4:
-    case 0: f = myo->textfont(); s = (int) myo->textsize(); c = myo->textcolor(); break;
+    case 0: f = myo->textfont(); s = myo->textsize(); c = myo->textcolor(); break;
     case 1: myo->textfont(f); break;
     case 2: myo->textsize((float)s); break;
     case 3: myo->textcolor(c); break;
@@ -115,11 +115,11 @@ int TextDisplayType::textstuff(int w, fltk::Font* f, int& s, fltk::Color c) {
   return 1;
 }
 
-int FileInputType::textstuff(int w, fltk::Font* f, int& s, fltk::Color c) {
+int FileInputType::textstuff(int w, fltk::Font* f, float& s, fltk::Color c) {
     fltk::FileInput *myo = (fltk::FileInput*)(w==4 ? ((WidgetType*)factory)->o : o);
   switch (w) {
     case 4:
-    case 0: f = myo->textfont(); s = (int) myo->textsize(); c = myo->textcolor(); break;
+    case 0: f = myo->textfont(); s = myo->textsize(); c = myo->textcolor(); break;
     case 1: myo->textfont(f); break;
     case 2: myo->textsize((float)s); break;
     case 3: myo->textcolor(c); break;

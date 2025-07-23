@@ -258,8 +258,8 @@ void dobut(fltk::Widget *, uintptr_t arg)
     CreateProcess(NULL, command, NULL, NULL, FALSE,
                   NORMAL_PRIORITY_CLASS, NULL, NULL, &suInfo, &prInfo);
 	
-    delete command;
-    delete copy_of_icommand;
+    delete[] command;
+    delete[] copy_of_icommand;
 	
 #else // NON _WIN32 systems.
 
@@ -269,7 +269,7 @@ void dobut(fltk::Widget *, uintptr_t arg)
     sprintf(command, "./%s &", menus[men].icommand[bn]);
     if(system(command)); // Kill the warn_unused_result error
 
-    delete command;
+    delete[] command;
 #endif // _WIN32
   }
 }

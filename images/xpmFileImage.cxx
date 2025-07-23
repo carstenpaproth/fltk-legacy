@@ -56,6 +56,7 @@ static char** read(char *name, int oneline = 0) {
   // read all the c-strings out of the file:
   char* local_data[INITIALLINES];
   char** data = local_data;
+  char** ret = 0;
   int malloc_size = INITIALLINES;
   char buffer[MAXSIZE+20];
   int i = 0;
@@ -105,10 +106,10 @@ static char** read(char *name, int oneline = 0) {
     if (i >= malloc_size) {
       malloc_size = 2*malloc_size;
       if (data == local_data) {
-	data = (char**)malloc(malloc_size*sizeof(char*));
+	ret = data = (char**)malloc(malloc_size*sizeof(char*));
 	memcpy(data, local_data, i*sizeof(char*));
       } else {
-	data = (char**)realloc(data, malloc_size*sizeof(char*));
+	ret = data = (char**)realloc(data, malloc_size*sizeof(char*));
       }
     }
     if (oneline) break;
@@ -119,10 +120,10 @@ static char** read(char *name, int oneline = 0) {
   if(!data[0])
     return 0;
   if (data == local_data) {
-    data = (char**)malloc(i*sizeof(char*));
+    ret = data = (char**)malloc(i*sizeof(char*));
     memcpy(data, local_data, i*sizeof(char*));
   }
-  return data;
+  return ret;
 }
 
 /*! Test a block of data read from the start of the file to see if it
